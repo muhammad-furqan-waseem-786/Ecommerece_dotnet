@@ -1,9 +1,9 @@
-﻿namespace Ecommerece_dotnet.Data
+﻿namespace Ecommerece_dotnet.Data.Enums
 {
     public enum MovieCategory
     {
         Action = 1,
-        Comedy, 
+        Comedy,
         Drama,
         Documentary
     }

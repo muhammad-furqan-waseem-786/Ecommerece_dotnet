@@ -1,4 +1,4 @@
-﻿using Ecommerece_dotnet.Data;
+﻿using Ecommerece_dotnet.Data.Enums;
 using System.ComponentModel.DataAnnotations;
 
 namespace Ecommerece_dotnet.Models
