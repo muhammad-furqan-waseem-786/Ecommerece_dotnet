@@ -12,7 +12,6 @@ namespace Ecommerece_dotnet.Models
         public string Description { get; set; }
 
         //Relationship
-        public List<Movie> Movies { get; set; }
-
+        public List<Movie> Movies { get; set; } //Cinema can sekk multiple movies
     }
 }

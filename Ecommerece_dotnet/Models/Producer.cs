@@ -11,6 +11,6 @@ namespace Ecommerece_dotnet.Models
         public string Bio { get; set; }
         
         //Relationship
-        public List<Movie> Movies { get; set; }
+        public List<Movie> Movies { get; set; } //This relations shows that a Producer can create multiple movies
     }
 }
