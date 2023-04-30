@@ -16,6 +16,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = E:\Semesters\Github\Ecommerece_dotnet\Ecommerece_dotnet
 build_property._RazorSourceGeneratorDebug = 
 
+[E:/Semesters/Github/Ecommerece_dotnet/Ecommerece_dotnet/Views/Actors/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWN0b3JzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/Semesters/Github/Ecommerece_dotnet/Ecommerece_dotnet/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

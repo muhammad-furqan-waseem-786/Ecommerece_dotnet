@@ -15,7 +15,7 @@ namespace Ecommerece_dotnet.Controllers
         public IActionResult Index()
         { 
             var data = _context.Actors.ToList();
-            return View();
+            return View(data);
         }
     }
 }
