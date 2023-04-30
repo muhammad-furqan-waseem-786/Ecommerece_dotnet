@@ -15,8 +15,8 @@ namespace Ecommerece_dotnet.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var allMovies = _context.Movies.ToListAsync();
-            return View();
+            var allMovies = await _context.Movies.Include(n => n.Cinema).ToListAsync();
+            return View(allMovies);
         }
     }
 }
