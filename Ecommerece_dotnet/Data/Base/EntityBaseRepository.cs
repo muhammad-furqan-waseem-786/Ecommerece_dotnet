@@ -1,5 +1,6 @@
 ﻿using Ecommerece_dotnet.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace Ecommerece_dotnet.Data.Base
 {
@@ -12,31 +13,24 @@ namespace Ecommerece_dotnet.Data.Base
             _context = context;
         }
 
-        public Task AddAsync(T entity)
+        public async Task AddAsync(T entity) => await _context.Set<T>().AddAsync(entity);
+        
+
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var entity = await _context.Set<T>().FirstOrDefaultAsync(n => n.Id == id);
+            EntityEntry entityEntry = _context.Entry<T>(entity);
+            entityEntry.State = EntityState.Deleted;
         }
 
-        public Task DeleteAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<IEnumerable<T>> GetAllAsync() => await _context.Set<T>().ToListAsync();
+         
+        public async Task<T> GetByIdAsync(int id) => await _context.Set<T>().FirstOrDefaultAsync(n => n.Id == id);
 
-        public async Task<IEnumerable<T>> GetAllAsync()
+        public async Task UpdateAsync(int id, T entity)
         {
-            var result = await _context.Set<T>().ToListAsync();
-            return result;
-        }
-
-        public async Task<T> GetByIdAsync(int id)
-        {
-            var result = await _context.Set<T>().FirstOrDefaultAsync(n => n.Id == id);
-            return result;
-        }
-
-        public Task<T> UpdateAsync(int id, T entity)
-        {
-            throw new NotImplementedException();
+            EntityEntry entityEntry = _context.Entry<T>(entity);
+            entityEntry.State = EntityState.Modified;
         }
     }
 }
