@@ -1,12 +1,13 @@
 ﻿using Ecommerece_dotnet.Data;
 using Ecommerece_dotnet.Data.Services;
+using Ecommerece_dotnet.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Ecommerece_dotnet.Controllers
 {
     public class ActorsController : Controller
     {
-        private readonly IActorsService _service;
+        private IActorsService _service;
 
         public ActorsController(IActorsService service)
         {
@@ -18,5 +19,23 @@ namespace Ecommerece_dotnet.Controllers
             var data = await _service.GetAll();
             return View(data);
         }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create([Bind("FullName, ProfilePictureURL, Bio")]Actor actor)
+        {
+            /*if(!ModelState.IsValid)
+            {
+                return View(actor);
+            }*/
+            _service.Add(actor);
+
+            return RedirectToAction(nameof(Index));
+        }
+        
     }
 }
