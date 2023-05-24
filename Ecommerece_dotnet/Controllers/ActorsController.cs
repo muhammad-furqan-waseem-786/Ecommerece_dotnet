@@ -13,7 +13,6 @@ namespace Ecommerece_dotnet.Controllers
         {
             _service = service;
         }
-
         public async Task<IActionResult> Index()
         { 
             var data = await _service.GetAllAsync();
@@ -41,12 +40,34 @@ namespace Ecommerece_dotnet.Controllers
             var actorDetails = await _service.GetByIdAsync(id);
             if (actorDetails == null)
             {
-                return View("Empty");
+                return View("Not Found");
             }
             else
             {
                 return View(actorDetails);
             }
+        }
+
+        public async Task<IActionResult> Edit(int id)
+        {
+            var actorDetails = await _service.GetByIdAsync(id);
+            if (actorDetails == null)
+            {
+                return View("Not Found");
+            }
+            return View(actorDetails);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, [Bind("Id, FullName, ProfilePictureURL, Bio")] Actor actor)
+        {
+            /*if (!ModelState.IsValid)
+            {
+                return View(actor);
+            }*/
+            await _service.UpdateAsync(id, actor);
+
+            return RedirectToAction(nameof(Index));
         }
     }
 }
